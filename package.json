@@ -1,21 +1,19 @@
 {
-  "name": "esaddon",
-  "version": "1.2.3",
+  "name": "streambridge",
+  "version": "2.0.0",
+  "description": "Unofficial addon that bridges Jellyfin to Stremio with catalog and internal player support.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "version:patch": "node scripts/bump-version.js"
+    "dev": "node --watch index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "axios": "^1.9.0",
+    "axios": "^1.6.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "express-rate-limit": "^7.5.0",
-    "stremio-addon-sdk": "^1.6.10"
-  }
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "license": "MIT"
 }
