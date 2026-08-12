@@ -404,6 +404,21 @@
 
   var secondaryOpen = false;
 
+  function encodeConfigPayload(config) {
+    var json = JSON.stringify(config);
+    var bytes = new TextEncoder().encode(json);
+    var binary = '';
+
+    for (var i = 0; i < bytes.length; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+
+    return btoa(binary)
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/g, '');
+  }
+
   // ── Toggle secundária ───────────────────────────────────────────────────────
   document.getElementById('toggleBtn').addEventListener('click', function () {
     secondaryOpen = !secondaryOpen;
@@ -503,7 +518,7 @@
       config = { primary: p };
     }
 
-    var encoded     = btoa(JSON.stringify(config));
+    var encoded     = encodeConfigPayload(config);
     var manifestUrl = window.location.origin + '/' + encoded + '/manifest.json';
 
     document.getElementById('manifestUrl').value = manifestUrl;
